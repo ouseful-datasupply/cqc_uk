@@ -22,7 +22,7 @@ Alternatively, use [datasette](https://github.com/simonw/datasette).
 
 ## Installation
 
-`pip install https://github.com/ouseful-datasupply/cqc_uk.git`
+`pip install --upgrade --no-deps git+https://github.com/ouseful-datasupply/cqc_uk.git`
 
 ## Usage
 
