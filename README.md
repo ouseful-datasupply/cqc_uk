@@ -18,7 +18,7 @@ The data tables are simple long form and partially normalised.
 
 An easy way of querying the database via a browser is to use [*Franchise*](https://blog.ouseful.info/2017/09/25/asking-questions-of-csv-data-in-the-browser-with-franchise/).
 
-Alternatively, use [datasette](https://github.com/simonw/datasette).
+See the database running as a [datasette](https://github.com/simonw/datasette) at: [https://ousefulnhsdata.herokuapp.com/](https://ousefulnhsdata.herokuapp.com/)
 
 ## Installation
 
