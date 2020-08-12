@@ -1,5 +1,7 @@
 # CQC-Data cli
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ouseful-datasupply/cqc_uk/master)
+
 Simple CLI to download CQC data ([Using CQC data](http://www.cqc.org.uk/about-us/transparency/using-cqc-data)) and pop it into a `SQLite3` database.
 
 By default, the database is created as `cqc_data.db` with tables:
