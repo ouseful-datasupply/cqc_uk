@@ -5,7 +5,7 @@
 Simple CLI to download CQC data ([Using CQC data](http://www.cqc.org.uk/about-us/transparency/using-cqc-data)) and pop it into a `SQLite3` database.
 
 
-__BELOW IS DEPRECATED: CQC NO LONGER PUBLISH RATINGS SPREADSHEETS? NEED TO USE API?__
+__BELOW IS DEPRECATED: ALL WE CAN GET A LOCATIONS. CQC NO LONGER PUBLISH RATINGS SPREADSHEETS? NEED TO USE API?__
 
 By default, the database is created as `cqc_data.db` with tables:
 
