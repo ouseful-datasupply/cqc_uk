@@ -1,3 +1,17 @@
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: light
+#       format_version: '1.5'
+#       jupytext_version: 1.5.2
+#   kernelspec:
+#     display_name: Python 3
+#     language: python
+#     name: python3
+# ---
+
 import pandas as pd
 import sqlite3
 
@@ -67,9 +81,8 @@ def _get_care_directory(con, exists='replace'):
         data = data.set_index(['CQC Location'])
         data.to_sql(con=con, name=table, if_exists=exists)
 
-    print('Getting location directory data...')
-
     url = _reps['care_directory']['url']
+    print(f'Getting location directory data from {url}')
     locations=read_csv(url,skiprows=4, dtype={'Phone number':str})
     locations.rename(columns={'CQC Location (for office use only':'CQC Location',
                           'CQC Provider ID (for office use only)':'CQC Provider ID'}, inplace=True)
@@ -92,8 +105,8 @@ def _get_active_locations(con, exists='replace'):
         xs=x.split(' - ')
         return ' - '.join([xs[0],'-'.join(xs[1:])])
 
-    print('Getting active locations data...')
     url = _reps['active_locations']['url']
+    print(f'Getting active locations data from {url}')
     directory = pd.read_excel(url, sheet_name='HSCA Active Locations', skiprows=0)
 
     itemcolroots = ["Regulated activity", "Service type", "Service user band"]
@@ -115,8 +128,9 @@ def _get_active_locations(con, exists='replace'):
                                                             if_exists='replace', index=False)
 
 def _get_ratings(con, exists='replace'):
-    print('Getting ratings data...')
+
     url = _reps['ratings']['url']
+    print(f'Getting ratings data from {url}')
     local_file, headers = urlretrieve(url)
 
     #Try to normalise the data a bit
@@ -155,20 +169,15 @@ def _create_index(con, table, cols, idx=None, unique=False):
                                                                           cols=','.join(['"{}"'.format(c) for c in cols]), unique=unique)
     cursor.execute(q, cols)
 
-
+# + tags=["active-ipynb"]
 # dbname = 'test1.db'
 # con = setdb(dbname)
 # _getDatasetURLs() 
 # _get_care_directory(con)
-# _get_active_locations(con)
-# _get_ratings(con)
+# # The following sheets are no longer available? Need to use API?
+# #_get_active_locations(con)
+# #_get_ratings(con)
 # print("Data saved to {}".format(dbname))
-
-dbname = 'test1.db'
-con = setdb(dbname)
-_getDatasetURLs() 
-_get_care_directory(con)
-_get_active_locations(con)
-_get_ratings(con)
+# -
 
 
